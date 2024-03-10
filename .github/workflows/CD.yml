@@ -19,8 +19,10 @@ jobs:
     
       - name: Delete Old Docker Container
         run: sudo docker rm -f bike_share_app|| true
+      - name: Delete Old Docker Container1
+        run: sudo docker rm -f bike_share_container|| true
     
       - name: Run Docker Container
         env: 
           DOCKER_USER: ${{ secrets.DOCKERHUB_USERNAME }}
-        run: sudo docker run -it -d -p 8001:8001 --name bike_share_app $DOCKER_USER/bike_share_app:latest
+        run: sudo docker run -it -d -p 8001:8001 --name bike_share_container $DOCKER_USER/bike_share_app:latest
