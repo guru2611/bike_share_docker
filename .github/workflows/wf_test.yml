@@ -1,5 +1,5 @@
 #CICD
-name: Python package
+name: CI Pipeline
 on: 
   push: 
     branches: ["main"]
@@ -61,7 +61,3 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Docker Push
       run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/bike_share_app
-    - name: Run Docker Container
-      env:
-        DOCKER_USER: ${{ secrets.DOCKERHUB_USERNAME }}
-      run: sudo docker run -it -d -p 8001:8001 --name bike_share_app $DOCKER_USER/bike_share_app:latest
